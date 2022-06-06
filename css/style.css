@@ -230,15 +230,12 @@ h6 {
   transition: all 0.3s ease 0s;
 }
 
-.header {
-  min-height: 5.625rem;
-}
-
 .header__container {
   min-height: 5.625rem;
 }
 
 .header__body {
+  min-height: 5.625rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -338,7 +335,9 @@ h6 {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  gap: 0.625rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.875rem;
 }
 
 .footer__logo {
@@ -531,6 +530,10 @@ h6 {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 37.5rem;
 }
 
 .image-block__body_l {
@@ -540,20 +543,43 @@ h6 {
 }
 
 .image-block__content {
-  margin: 16.625rem 0rem;
+  margin: 6.625rem 0rem;
   max-width: 17.8125rem;
 }
 
 .image-block__title {
   color: #403E3B;
-  font-size: 0.875rem;
   line-height: 1.4285714286;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
 }
 
+@supports (font-size: clamp( 0.875rem , 1.2159090909rem  +  -0.4545454545vw , 1.125rem )) {
+  .image-block__title {
+    font-size: clamp( 0.875rem , 1.2159090909rem  +  -0.4545454545vw , 1.125rem );
+  }
+}
+
+@supports not (font-size: clamp( 0.875rem , 1.2159090909rem  +  -0.4545454545vw , 1.125rem )) {
+  .image-block__title {
+    font-size: calc(1.125rem + -0.25 * (100vw - 20rem) / 55);
+  }
+}
+
 .image-block__text {
   line-height: 1.5;
+}
+
+@supports (font-size: clamp( 1rem , 1.3409090909rem  +  -0.4545454545vw , 1.25rem )) {
+  .image-block__text {
+    font-size: clamp( 1rem , 1.3409090909rem  +  -0.4545454545vw , 1.25rem );
+  }
+}
+
+@supports not (font-size: clamp( 1rem , 1.3409090909rem  +  -0.4545454545vw , 1.25rem )) {
+  .image-block__text {
+    font-size: calc(1.25rem + -0.25 * (100vw - 20rem) / 55);
+  }
 }
 
 .process-block__container {
@@ -771,7 +797,6 @@ h6 {
 }
 
 .project-block__columns {
-  gap: 1.25rem;
   display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
@@ -781,6 +806,18 @@ h6 {
 
 .project-block__columns:not(:last-child) {
   margin-bottom: 3.3125rem;
+}
+
+@supports (gap: clamp( 0.625rem , 0.3977272727rem  +  1.1363636364vw , 1.25rem )) {
+  .project-block__columns {
+    gap: clamp( 0.625rem , 0.3977272727rem  +  1.1363636364vw , 1.25rem );
+  }
+}
+
+@supports not (gap: clamp( 0.625rem , 0.3977272727rem  +  1.1363636364vw , 1.25rem )) {
+  .project-block__columns {
+    gap: calc(0.625rem + 0.625 * (100vw - 20rem) / 55);
+  }
 }
 
 .project-block__btn-more {
@@ -794,6 +831,19 @@ h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 28.5rem;
+}
+
+@supports (height: clamp( 23.125rem , 21.1704545455rem  +  9.7727272727vw , 28.5rem )) {
+  .project-columns__item {
+    height: clamp( 23.125rem , 21.1704545455rem  +  9.7727272727vw , 28.5rem );
+  }
+}
+
+@supports not (height: clamp( 23.125rem , 21.1704545455rem  +  9.7727272727vw , 28.5rem )) {
+  .project-columns__item {
+    height: calc(23.125rem + 5.375 * (100vw - 20rem) / 55);
+  }
 }
 
 .project-columns__img {
@@ -815,15 +865,15 @@ h6 {
   height: 100%;
 }
 
-@supports (padding: clamp( 1.25rem , 0.6818181818rem  +  2.8409090909vw , 2.8125rem )) {
+@supports (padding: clamp( 1.875rem , 1.5340909091rem  +  1.7045454545vw , 2.8125rem )) {
   .project-columns__info {
-    padding: clamp( 1.25rem , 0.6818181818rem  +  2.8409090909vw , 2.8125rem );
+    padding: clamp( 1.875rem , 1.5340909091rem  +  1.7045454545vw , 2.8125rem );
   }
 }
 
-@supports not (padding: clamp( 1.25rem , 0.6818181818rem  +  2.8409090909vw , 2.8125rem )) {
+@supports not (padding: clamp( 1.875rem , 1.5340909091rem  +  1.7045454545vw , 2.8125rem )) {
   .project-columns__info {
-    padding: calc(1.25rem + 1.5625 * (100vw - 20rem) / 55);
+    padding: calc(1.875rem + 0.9375 * (100vw - 20rem) / 55);
   }
 }
 
@@ -1077,6 +1127,12 @@ h6 {
     display: none;
   }
 
+  .image-block__body {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+  }
+
   .process-block__columns {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1139,6 +1195,11 @@ h6 {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+
+  .project-block__columns {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   .team-block__teams {
